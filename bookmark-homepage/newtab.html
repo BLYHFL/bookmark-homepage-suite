@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>新标签页</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="bg"></div>
+  <img id="bg-photo" alt="" class="hidden">
+  <div id="bg-overlay"></div>
+
+  <!-- 主内容:搜索框在上 1/3 处,收藏卡片排在下面 -->
+  <main id="page">
+    <div id="search-wrap">
+      <div id="searchbar">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path fill="currentColor" d="M15.5 14h-.79l-.28-.27a6.5 6.5 0 1 0-.7.7l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0A4.5 4.5 0 1 1 14 9.5 4.5 4.5 0 0 1 9.5 14z"/></svg>
+        <input id="search" type="text" autocomplete="off">
+      </div>
+      <div id="suggest" class="hidden"></div>
+    </div>
+    <nav id="breadcrumb" aria-label="路径"></nav>
+    <div id="grid" role="list"></div>
+    <div id="empty" class="hidden">这个文件夹还没有收藏</div>
+  </main>
+
+  <!-- 右下角设置:更换壁纸 -->
+  <button id="settings-btn" title="更换壁纸">
+    <svg viewBox="0 0 24 24" width="17" height="17"><path fill="currentColor" d="M19.14 12.94a7.5 7.5 0 0 0 .05-.94 7.5 7.5 0 0 0-.05-.94l2.03-1.58a.5.5 0 0 0 .12-.64l-1.92-3.32a.5.5 0 0 0-.61-.22l-2.39.96a7.3 7.3 0 0 0-1.62-.94l-.36-2.54a.5.5 0 0 0-.5-.42h-3.84a.5.5 0 0 0-.5.42l-.36 2.54c-.59.24-1.13.56-1.62.94l-2.39-.96a.5.5 0 0 0-.61.22L2.6 8.84a.5.5 0 0 0 .12.64l2.03 1.58a7.5 7.5 0 0 0 0 1.88l-2.03 1.58a.5.5 0 0 0-.12.64l1.92 3.32c.13.23.4.32.61.22l2.39-.96c.49.38 1.03.7 1.62.94l.36 2.54c.04.24.25.42.5.42h3.84c.25 0 .46-.18.5-.42l.36-2.54a7.3 7.3 0 0 0 1.62-.94l2.39.96c.22.1.48 0 .61-.22l1.92-3.32a.5.5 0 0 0-.12-.64l-2.03-1.58zM12 15.5A3.5 3.5 0 1 1 15.5 12 3.5 3.5 0 0 1 12 15.5z"/></svg>
+  </button>
+
+  <dialog id="settings">
+    <h3>坚果云书签同步</h3>
+    <div id="sync-status">状态:读取中…</div>
+    <div class="sync-buttons">
+      <button id="sync-pick" type="button">选择坚果云文件夹</button>
+      <button id="sync-now" type="button">立即同步</button>
+    </div>
+    <label class="chk"><input type="checkbox" id="sync-auto"> 每次打开新标签页时自动同步</label>
+
+    <h3 class="mt2">壁纸设置</h3>
+    <label>上传本地图片</label>
+    <button id="wp-upload" type="button">选择图片…</button>
+    <input id="wp-file" type="file" accept="image/*" hidden>
+
+    <label class="mt">文件夹卡片样式</label>
+    <div id="style-row"></div>
+
+    <label class="mt">或填写在线图片地址</label>
+    <input id="wallpaper-url" type="url" placeholder="https://...">
+
+    <div class="dialog-actions">
+      <button id="wp-reset" type="button">恢复默认渐变</button>
+      <button id="wp-save" type="button">保存地址</button>
+    </div>
+  </dialog>
+
+  <script src="sync.js"></script>
+  <script src="newtab.js"></script>
+</body>
+</html>

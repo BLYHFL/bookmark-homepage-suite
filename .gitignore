@@ -1,0 +1,5 @@
+.DS_Store
+__pycache__/
+*.pyc
+# 扩展私钥不上传;本地保留在 dist/ 用于保持扩展 ID
+dist/*.pem
